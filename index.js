@@ -122,6 +122,15 @@ app.post("/job", async (request,response)=>{
             return await client.db("b28wd").collection("jobuser").insertOne(data);
         }
 
+        app.get("/user/:id", async (request,response)=>{
+            console.log(request.params);
+            const {id} = request.params;
+            const job = await getUserById(id)
+            console.log(job);
+        
+            job? response.send(job) : response.status(404).send({message:"no matching found"});
+        });
+
         app.put("/user/:id", async (request,response)=>{
             console.log(request.params);
             const {id} = request.params;
