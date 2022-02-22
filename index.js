@@ -127,8 +127,9 @@ app.post("/job", async (request,response)=>{
             const {id} = request.params;
             const data = request.body;
             const result = await editJobsUserById(id, data);
+            const movie = await getUserById(id);
             console.log(result);
-            response.send(result);
+            response.send(movie);
         });
         
         async function editJobsUserById(id, data) {
@@ -136,6 +137,13 @@ app.post("/job", async (request,response)=>{
                 .db("b28wd")
                 .collection("jobuser")
                 .updateOne({ _id: ObjectId(id) }, { $set: data });
+        }
+
+        async function getUserById(id) {
+            return await client
+                .db("b28wd")
+                .collection("jobuser")
+                .findOne({ _id: ObjectId(id) });
         }
 
 
