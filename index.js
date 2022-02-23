@@ -92,7 +92,7 @@ app.post("/job", async (request,response)=>{
     }
     
     async function createJobs(data) {
-        return await client.db("b28wd").collection("job").insertMany(data);
+        return await client.db("b28wd").collection("job").insertOne(data);
     }
     
     async function getJobsById(id) {
@@ -173,7 +173,7 @@ app.post("/job", async (request,response)=>{
             });
     
             async function createJobsList(data) {
-                return await client.db("b28wd").collection("joblist").insertMany(data);
+                return await client.db("b28wd").collection("joblist").insertOne(data);
             }
 
 
