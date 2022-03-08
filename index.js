@@ -29,7 +29,7 @@ const client = await createConnection();
 
 
 app.get("/",(request,response)=>{
-    response.send("hi hello happy world");
+    response.send("hello happy world");
 });
 
 app.get("/job", async (request,response)=>{
